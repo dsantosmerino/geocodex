@@ -5,19 +5,19 @@ A Google Geocoding API wrapper written in Elixir
 
   1. Add `geocodex` to your list of dependencies in `mix.exs`:
 
-    ```elixir
-    def deps do
-      [{:geocodex, "~> 0.1.0"}]
-    end
-    ```
+  ```elixir
+  def deps do
+    [{:geocodex, "~> 0.1.0"}]
+  end
+  ```
 
   2. Ensure `httpoison` is started before your application:
 
-    ```elixir
-    def application do
-      [applications: [:httpoison]]
-    end
-    ```
+  ```elixir
+  def application do
+    [applications: [:httpoison]]
+  end
+  ```
 
 ## Usage
 
