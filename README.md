@@ -1,4 +1,7 @@
 # Geocodex
+[![Build Status](https://travis-ci.org/dsantosmerino/geocodex.svg?branch=master)](https://travis-ci.org/dsantosmerino/geocodex)
+[![Hex Version](https://img.shields.io/hexpm/v/geocodex.svg)](https://hex.pm/packages/geocodex)
+
 A Google Geocoding API wrapper written in Elixir
 
 ## Installation
