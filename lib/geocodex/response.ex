@@ -1,13 +1,19 @@
 defmodule Geocodex.Response do
-  @moduledoc false
+  @moduledoc """
+  Allows to to handle responses from Geocodex.Api
+  """
 
+  @doc """
+  Handles and parses :ok responses
+  """
   def handle({:ok, %{status_code: 200} = response}) do
     response |> parse_body
   end
   
-  def handle({:error, response}) do
-    {:error, response}
-  end
+  @doc """
+  Handles and parses :error responses
+  """
+  def handle({:error, response}), do: {:error, response}
 
   def parse(data) do
     results = data["results"]
@@ -32,7 +38,11 @@ defmodule Geocodex.Response do
   
   defp find_name_by_type(result, type) when is_map(result) do
     case Map.fetch(result, "address_components") do
-      {:ok, value} -> value |> Enum.find(fn(x) -> x["types"] |> Enum.member?(type) end) |> (&(&1["long_name"])).()
+      {:ok, value} -> 
+        value 
+        |> Enum.find(fn(x) -> x["types"] 
+        |> Enum.member?(type) end) 
+        |> (&(&1["long_name"])).()
       _ -> nil
     end
   end

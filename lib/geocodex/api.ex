@@ -1,16 +1,27 @@
 defmodule Geocodex.Api do
-  @moduledoc false
+  @moduledoc """
+  Provides Google Maps Geocoding API interfaces
+  """
 
   alias Geocodex.{Config, Response}
 
+  @doc """
+  Calls the API using address
+  """
   def get_by_address(address) do
     request(%{address: address})
   end
-
+  
+  @doc """
+  Calls the API using latlong
+  """
   def get_by_coordinates(latitude, longitude) do
     request(%{latlng: "#{latitude},#{longitude}"})
   end
 
+  @doc """
+  Calls the API using place_id
+  """
   def get_by_place_id(place_id) do
     request(%{place_id: place_id})
   end
@@ -24,7 +35,7 @@ defmodule Geocodex.Api do
   end
 
   defp build_url(qs_params) do
-    Config.geocode_api_url <> "/json?" <> qs_params
+    "#{Config.geocode_api_url}/json?#{qs_params}"
   end
 
   defp build_qs_params(specific_params) do
